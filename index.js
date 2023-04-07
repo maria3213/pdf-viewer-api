@@ -3,6 +3,7 @@ const fsPromise = require('fs').promises;
 const fs = require('fs');
 const path = require('path');
 require("dotenv").config();
+const cors = require('cors');
 
 const app = express();
 const pdfDirectory = __dirname + '/pdfs';
@@ -65,3 +66,8 @@ app.get('/pdf/:filePath', async (req, res) => {
 app.listen(process.env.PORT || 3000, () => {
   console.log('Server started on port 3000');
 });
+
+
+app.use(cors({
+    origin: '*'
+}));
